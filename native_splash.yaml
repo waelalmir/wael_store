@@ -1,0 +1,15 @@
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/delivery.gif
+  branding: assets/money.png
+  color_dark: "#121212"
+  image_dark: assets/delivery.gif
+  branding_dark: assets/money.png
+
+  android_12:
+    image: assets/delivery.gif
+    icon_background_color: "#ffffff"
+    image_dark: assets/delivery.gif
+    icon_background_color_dark: "#121212"
+
+  web: false
