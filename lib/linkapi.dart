@@ -1,7 +1,7 @@
 class AppLink {
-  static const String server = "https://waelalmir.com/ecommerce";
+  static const String server = "https://path";
 //
-  static const String test = "$server/test.php";
+  
   static const String imageststatic =
       "https://waelalmir.com/ecommerce/categories";
 // ================================= Auth ========================== //
