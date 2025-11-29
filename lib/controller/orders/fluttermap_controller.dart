@@ -18,10 +18,10 @@ class FluttermapController extends GetxController {
   // 📍 موقع المتجر الثابت (نقطة البداية الدائمة)
   final LatLng storeLocation = const LatLng(33.5138, 36.2765);
 
-  final String stadiaApiKey = '0a51e892-7c40-44f6-a6a3-ebe7994f3c9a';
+  final String stadiaApiKey = 'stadiaApiKey';
   // 💡 يجب استبدال هذا المفتاح بمفتاحك من OpenRouteService
   final String openRouteServiceApiKey =
-      'eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImY1NjMzYTJhZTA2MDQ2MjI5M2MwMDRlOWM5YWI0NGQyIiwiaCI6Im11cm11cjY0In0=';
+      'openRouteServiceApiKey';
 
   // إحداثيات مركز الخريطة الابتدائية
   LatLng mapCenter = const LatLng(33.5138, 36.2765);
