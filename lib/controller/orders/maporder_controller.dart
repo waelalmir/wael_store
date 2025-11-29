@@ -40,11 +40,11 @@ class OrderMapUserController extends GetxController {
         deliveryApp = await Firebase.initializeApp(
           name: 'deliveryApp',
           options: const FirebaseOptions(
-            apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxAh8bWbWZqop5Q",
-            appId: "1:730413232073:android:1983d4a32f078d9c5e4218",
-            messagingSenderId: "730413232073",
-            projectId: "delivery-35930",
-            storageBucket: "delivery-35930.firebasestorage.app",
+            apiKey: "apiKey",
+            appId: "appId",
+            messagingSenderId: "messagingSenderId",
+            projectId: "projectId",
+            storageBucket: "storageBucket",
           ),
         );
         print("✅ deliveryApp initialized successfully.");
