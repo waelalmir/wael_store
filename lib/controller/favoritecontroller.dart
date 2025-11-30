@@ -29,22 +29,18 @@ class Favoritecontroller extends GetxController {
     statusRequest = handlingData(response);
 
     if (StatusRequest.success == statusRequest) {
-      // =================   بداية التعديل   =================
-      // التحقق من أن response يحتوي على بيانات قبل استخدامه
+
       if (response != null && response['data'] != null) {
         Get.rawSnackbar(
             title: "notification",
             icon: Icon(Icons.notifications_active),
             messageText: Text("product add it to favorite"));
-        //  data.addAll(response['data']);
       } else {
-        // إذا كانت البيانات فارغة، اعتبرها كفشل لمنع الخطأ
         print("Response data is null, setting status to failure.");
         statusRequest = StatusRequest.failure;
       }
-      // =================   نهاية التعديل   =================
     }
-    update(); // تحديث الواجهة لعرض البيانات أو رسالة الخطأ
+    update(); 
   }
 
   removeFav(String itemsid) async {
@@ -57,22 +53,17 @@ class Favoritecontroller extends GetxController {
     statusRequest = handlingData(response);
 
     if (StatusRequest.success == statusRequest) {
-      // =================   بداية التعديل   =================
-      // التحقق من أن response يحتوي على بيانات قبل استخدامه
       if (response != null && response['data'] != null) {
         Get.rawSnackbar(
             title: "notification",
             icon: Icon(Icons.notifications_off_rounded),
             messageText: Text("product remove it to favorite"));
 
-        //  data.addAll(response['data']);
       } else {
-        // إذا كانت البيانات فارغة، اعتبرها كفشل لمنع الخطأ
         print("Response data is null, setting status to failure.");
         statusRequest = StatusRequest.failure;
       }
-      // =================   نهاية التعديل   =================
     }
-    update(); // تحديث الواجهة لعرض البيانات أو رسالة الخطأ
+    update(); 
   }
 }
