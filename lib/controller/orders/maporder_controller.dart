@@ -13,17 +13,15 @@ class OrderMapUserController extends GetxController {
   OrdersModel? ordersModel;
   Timer? timer;
 
-  // 🔹 النقاط على الخريطة
   var actualRoutePoints = <LatLng>[].obs;
 
   late String addressName;
-  late LatLng customerPoint; // موقع المستخدم
-  LatLng? deliveryPoint; // موقع الدليفري
+  late LatLng customerPoint; 
+  LatLng? deliveryPoint; 
 
-  FirebaseApp? deliveryApp; // التطبيق الخاص بمشروع الدليفري
+  FirebaseApp? deliveryApp; 
   FirebaseFirestore? deliveryFirestore;
 
-  // 🔹 النقاط التي تُرسم على الخريطة
   List<LatLng> get routePoints {
     if (deliveryPoint == null) return [customerPoint];
     return [deliveryPoint!, customerPoint];
@@ -31,12 +29,10 @@ class OrderMapUserController extends GetxController {
 
   Future<void> initDeliveryFirebase() async {
     try {
-      // 🔹 إذا التطبيق موجود، استرجعه بدل ما تعيد تهيئته
       if (Firebase.apps.any((app) => app.name == 'deliveryApp')) {
-        print("⚡ deliveryApp already initialized, using existing instance.");
+        print("deliveryApp already initialized, using existing instance.");
         deliveryApp = Firebase.app('deliveryApp');
       } else {
-        // 🔹 إنشاء التطبيق إذا ما كان موجود
         deliveryApp = await Firebase.initializeApp(
           name: 'deliveryApp',
           options: const FirebaseOptions(
@@ -47,17 +43,15 @@ class OrderMapUserController extends GetxController {
             storageBucket: "storageBucket",
           ),
         );
-        print("✅ deliveryApp initialized successfully.");
+        print("deliveryApp initialized successfully.");
       }
 
-      // 🔹 إنشاء Firestore instance خاص بالتطبيق الثاني
       deliveryFirestore = FirebaseFirestore.instanceFor(app: deliveryApp!);
     } catch (e) {
-      print("❌ Error initializing delivery Firebase: $e");
+      print("Error initializing delivery Firebase: $e");
     }
   }
 
-  // 🛰️ مراقبة موقع عامل التوصيل من Firestore المشروع الثاني
   void startTrackingDelivery() {
     if (ordersModel == null) {
       print("OrderMapUserController: ordersModel is null");
@@ -75,14 +69,13 @@ class OrderMapUserController extends GetxController {
 
         if (lat != null && long != null) {
           deliveryPoint = LatLng(lat, long);
-          fetchRoute(); // جلب المسار
+          fetchRoute(); 
           update();
         }
       }
     });
   }
 
-  // 🚗 جلب المسار عبر OSRM
   Future<void> fetchRoute() async {
     if (deliveryPoint == null) return;
 
@@ -113,7 +106,6 @@ class OrderMapUserController extends GetxController {
     update();
   }
 
-  // ⚙️ تهيئة البيانات من صفحة الطلبات
   void _initializeData() {
     if (Get.arguments != null &&
         Get.arguments['lat'] is double &&
@@ -133,8 +125,8 @@ class OrderMapUserController extends GetxController {
   void onInit() async {
     super.onInit();
     _initializeData();
-    await initDeliveryFirebase(); // 🟢 اتصل بمشروع الدليفري
-    startTrackingDelivery(); // 🛰️ تابع الموقع
+    await initDeliveryFirebase(); 
+    startTrackingDelivery(); 
   }
 
   @override
