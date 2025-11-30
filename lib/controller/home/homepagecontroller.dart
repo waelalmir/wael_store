@@ -30,10 +30,8 @@ class HomepagecontrollerImp extends Homepagecontroller {
   String? catId;
   String? lang;
 
-  // من الأفضل إعطاء قيمة ابتدائية للحالة
 
   @override
-  // ignore: overridden_fields
   StatusRequest statusRequest = StatusRequest.none;
 
   @override
@@ -96,15 +94,8 @@ class HomepagecontrollerImp extends Homepagecontroller {
     Get.toNamed(AppRoutes.myfavorite);
   }
 
-  // void printDeviceToken() async {
-  //   String? token = await FirebaseMessaging.instance.getToken();
-  //   print("🔥 FCM Device Token:");
-  //   print(token);
-  // }
-
   @override
   void onInit() {
-    // printDeviceToken();
     search = TextEditingController();
 
     initialData();
