@@ -34,72 +34,11 @@ class Checkoutontroller extends GetxController {
   }
 
   getShippingAddress() async {
-    statusRequest = StatusRequest.loading;
-    update(); // <--- تحديث الواجهة لحالة التحميل
-
-    var response = await addressData
-        .viewAddress(myServices.sharedPrefrences.getString("id")!);
-    print("=============================== Controller $response ");
-
-    statusRequest = handlingData(response);
-
-    if (StatusRequest.success == statusRequest) {
-      if (response != null && response['data'] != null) {
-        List responseData = response['data'];
-        data.addAll(responseData.map((e) => AddressModel.fromJson(e)).toList());
-        addressid = data[0].addressId.toString();
-      } else {
-        // ✅ إذا كان الرد ناجحاً لكن قائمة البيانات فارغة
-        print(
-            "Response data is null or empty, setting status to failure if needed.");
-        // إذا كانت القائمة فارغة لكن الـ status هو "success" من الخادم، اترك الـ statusRequest = StatusRequest.success
-        if (data.isEmpty) {
-          // يمكن إبقاؤها ناجحة لعرض واجهة "لا يوجد بيانات"
-          // أو تعيينها كـ failure إذا كان لا يُتوقع أن تكون فارغة
-          statusRequest = StatusRequest.success;
-        }
-      }
-    }
-
-    update();
+//
   }
 
   checkOut() async {
-    if (payMethod == null) {
-      return Get.snackbar("Alert", 'please Choose Paymethod !!');
-    }
-    if (addressid == null) {
-      return Get.snackbar("Alert", 'please Choose an Address !!');
-    }
-    statusRequest = StatusRequest.loading;
-    update(); // <--- تحديث الواجهة لحالة التحميل
-    Map data = {
-      "usersid": myServices.sharedPrefrences.getString("id"),
-      "addressid": addressid.toString(),
-      //  "orderstype": deliveryType.toString(),
-      "pricedelivery": "10",
-      "ordersprice": priceorders,
-      "couponid": couponid,
-      // "coupondiscount": coupondiscount.toString(),
-      "paymentmethod": payMethod.toString(),
-      "orderitemprice": itemprice.toString(),
-    };
-    var response = await checkoutData.getData(data);
-    print("=============================== Controller $response ");
-
-    statusRequest = handlingData(response);
-
-    if (StatusRequest.success == statusRequest) {
-      // List responseData = response['data'];
-      // data.addAll(responseData.map((e) => AddressModel.fromJson(e)).toList());
-      Get.offAllNamed(AppRoutes.homePage);
-      print("success");
-    } else {
-      statusRequest = StatusRequest.none;
-      Get.snackbar("Alert", "Your cart is Empty");
-    }
-
-    update();
+//
   }
 
   paymentMethod(val) {
