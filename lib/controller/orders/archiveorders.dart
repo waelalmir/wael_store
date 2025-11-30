@@ -30,13 +30,12 @@ class ArchiveordersController extends GetxController {
         data.clear();
 
         List dataresponse = response['data'];
-        // Map dataresponsecountprice = response['countprice'];
         data.addAll(dataresponse.map((e) => OrdersModel.fromJson(e)));
         animated = List<bool>.filled(data.length, false);
       }
     } else {
       statusRequest = StatusRequest.failure;
-      Get.snackbar("Oops", "There was no orders yet");
+      Get.snackbar("Oops", "There was no archive orders yet");
     }
     update();
   }
@@ -50,16 +49,10 @@ class ArchiveordersController extends GetxController {
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
-      refrehOrder(); // if (response != null && response['data'] != null) {
-      //   data.clear();
-
-      //   List dataresponse = response['data'];
-      //   // Map dataresponsecountprice = response['countprice'];
-      //   data.addAll(dataresponse.map((e) => OrdersModel.fromJson(e)));
-      // }
+      refrehOrder();
     } else {
       statusRequest = StatusRequest.failure;
-      Get.snackbar("Oops", "There order faild rating");
+      Get.snackbar("Oops", "rating order failed");
     }
     update();
   }
@@ -69,13 +62,11 @@ class ArchiveordersController extends GetxController {
   }
 
   String getPayMethodText(String payMethodValue) {
-    // التحقق من القيمة المدخلة وتطبيق المنطق
     if (payMethodValue == "0") {
       return "Cash";
     } else if (payMethodValue == "1") {
       return "Card";
     } else {
-      // قيمة افتراضية في حال كانت القيمة غير 0 أو 1
       return "Unknown";
     }
   }
