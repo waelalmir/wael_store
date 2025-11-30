@@ -24,11 +24,9 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
       statusRequest = StatusRequest.loading;
       update();
       var response = await checkEmailData.postData(email.text);
-      print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          // data.addAll(response['data']);
           Get.offNamed(AppRoutes.verifyCode, arguments: {"email": email.text});
         } else {
           Get.defaultDialog(title: "ُWarning", middleText: "Email undefind");
