@@ -9,7 +9,7 @@ class InfiniteScrollController extends GetxController {
   late ScrollController scroll;
   Timer? timer;
 
-  double speed = 0.5; // 🟢 سرعة أبطأ كما طلبت
+  double speed = 0.5; 
   bool userDragging = false;
   bool userUsedArrow = false;
 
@@ -22,34 +22,11 @@ class InfiniteScrollController extends GetxController {
   }
 
   void setup(int count) {
-    itemCount = count;
-    scroll = ScrollController(initialScrollOffset: 5000);
-    startAutoScroll();
-
-    scroll.addListener(() {
-      if (!scroll.hasClients) return;
-
-      // إعادة التمركز
-      if (scroll.offset > scroll.position.maxScrollExtent - 200) {
-        scroll.jumpTo(3000);
-      }
-    });
+//
   }
 
-  /// Auto Scroll
   void startAutoScroll() {
-    if (!autoScrollEnabled) return; // 🆕 إيقاف كامل إذا غير مفعل
-
-    timer ??= Timer.periodic(const Duration(milliseconds: 30), (_) {
-      if (!scroll.hasClients) return;
-
-      if (userDragging || userUsedArrow) return;
-
-      // تغيير الاتجاه حسب اللغة
-      double direction = lang == "ar" ? -1 : 1; // 🆕 العربي يمين→يسار
-
-      scroll.jumpTo(scroll.offset + speed * direction);
-    });
+//
   }
 
   void stopAutoScroll() {
@@ -57,7 +34,6 @@ class InfiniteScrollController extends GetxController {
     timer = null;
   }
 
-  /// عند سحب المستخدم
   void onUserDragStart() {
     userDragging = true;
     stopAutoScroll();
@@ -73,41 +49,12 @@ class InfiniteScrollController extends GetxController {
     });
   }
 
-  /// الأسهم
   void scrollLeft() {
-    userUsedArrow = true;
-    stopAutoScroll();
-
-    double direction = lang == "ar" ? 1 : -1; // 🆕 عكس الاتجاه بالعربي
-
-    scroll.animateTo(
-      scroll.offset + (200 * direction),
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeOut,
-    );
-
-    Future.delayed(Duration(seconds: 2), () {
-      userUsedArrow = false;
-      if (!userDragging && autoScrollEnabled) startAutoScroll();
-    });
+//
   }
 
   void scrollRight() {
-    userUsedArrow = true;
-    stopAutoScroll();
-
-    double direction = lang == "ar" ? -1 : 1; // 🆕 عكس الاتجاه بالعربي
-
-    scroll.animateTo(
-      scroll.offset + (200 * direction),
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeOut,
-    );
-
-    Future.delayed(Duration(seconds: 2), () {
-      userUsedArrow = false;
-      if (!userDragging && autoScrollEnabled) startAutoScroll();
-    });
+//
   }
 
   void setAutoScroll(bool enabled) {
