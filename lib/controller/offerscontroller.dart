@@ -24,7 +24,6 @@ class OffersController extends GetxController {
     statusRequest = handlingData(response);
 
     if (StatusRequest.success == statusRequest) {
-      // Start backend
       if (response['status'] == "success") {
         List responseData = response['data'];
         data.addAll(
@@ -33,7 +32,6 @@ class OffersController extends GetxController {
       } else {
         statusRequest = StatusRequest.failure;
       }
-      // End
     }
     update();
   }
