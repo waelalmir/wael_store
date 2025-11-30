@@ -28,10 +28,10 @@ class HomeScreenControllerImp extends Homescreencontroller {
   ];
 
   List<IconData> listIconsOfPages = [
-    Icons.home, // الأيقونة الأولى
-    Icons.settings, // الأيقونة الثانية
-    Icons.favorite, // الأيقونة الثالثة
-    Icons.person, // الأيقونة الرابعة
+    Icons.home, 
+    Icons.settings, 
+    Icons.favorite, 
+    Icons.person, 
   ];
 
   @override
