@@ -15,7 +15,6 @@ abstract class ItemsController extends SearchMixController {
   getItems(String catId) {}
   updateItems(String catId) {}
 
-  // goToProductDetails(ItemsModel itemsModel) {}
 }
 
 class ItemscontrollerImp extends ItemsController {
@@ -27,20 +26,15 @@ class ItemscontrollerImp extends ItemsController {
   List data = [];
   String? catId;
   MyServices myServices = Get.find();
-  // من الأفضل إعطاء قيمة ابتدائية للحالة
   late StatusRequest statusRequest;
 
   @override
   getItems(catId) async {
     data.clear();
     statusRequest = StatusRequest.loading;
-    update(); // تحديث الواجهة لإظهار مؤشر التحميل
-
-    // تأكد من أن myServices.sharedPrefrences.getString("id") لا تُرجع null
-    // إذا كان يمكن أن تكون null، يجب توفير قيمة افتراضية أو معالجة الحالة
+    update(); 
     String? userId = myServices.sharedPrefrences.getString("id");
     if (userId == null) {
-      // يمكنك هنا إظهار خطأ أو التعامل مع حالة عدم تسجيل الدخول
       statusRequest = StatusRequest.failure;
       update();
       return;
@@ -65,7 +59,7 @@ class ItemscontrollerImp extends ItemsController {
         statusRequest = StatusRequest.failure;
       }
     }
-    update(); // تحديث الواجهة لعرض البيانات أو رسالة الخطأ
+    update(); 
   }
 
   @override
