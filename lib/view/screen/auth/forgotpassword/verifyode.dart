@@ -28,7 +28,6 @@ class VerifyCode extends StatelessWidget {
                 children: [
                   const SizedBox(height: 10),
 
-                  /// 🔹 عنوان الصفحة
                   CustomTextTitleAuth(
                     text1: "",
                     text2: "Enter the 5-digit code sent to your email".tr,
@@ -36,7 +35,6 @@ class VerifyCode extends StatelessWidget {
 
                   const SizedBox(height: 25),
 
-                  /// 🔥 OTP Text Field بتصميم جديد
                   OtpTextField(
                     numberOfFields: 5,
                     fieldHeight: 58,
@@ -59,7 +57,6 @@ class VerifyCode extends StatelessWidget {
 
                   const SizedBox(height: 30),
 
-                  /// 🔹 زر إعادة الإرسال
                   // Center(
                   //   child: TextButton(
                   //     onPressed: () {
