@@ -19,7 +19,7 @@ class Settings extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
 
-          // ========== PROFILE HEADER ==========
+          // ========== PROFILE ==========
           Center(
             child: Column(
               children: [
@@ -61,7 +61,7 @@ class Settings extends StatelessWidget {
 
           const SizedBox(height: 30),
 
-          // ========== SETTINGS CARDS ==========
+          // ========== SETTINGS ==========
           ...List.generate(
             controller.settingsections.length,
             (index) {
