@@ -19,11 +19,10 @@ class Addressviewcontroller extends GetxController {
 
   List<AddressModel> data = [];
 
-  // في ملف Addressviewcontroller.dart
 
   viewAddress() async {
     statusRequest = StatusRequest.loading;
-    update(); // <--- تحديث الواجهة لحالة التحميل
+    update(); 
 
     var response = await addressData.viewAddress(usersid);
     print("=============================== Controller $response ");
@@ -35,19 +34,15 @@ class Addressviewcontroller extends GetxController {
         List responseData = response['data'];
         data.addAll(responseData.map((e) => AddressModel.fromJson(e)).toList());
       } else {
-        // ✅ إذا كان الرد ناجحاً لكن قائمة البيانات فارغة
         print(
-            "Response data is null or empty, setting status to failure if needed.");
-        // إذا كانت القائمة فارغة لكن الـ status هو "success" من الخادم، اترك الـ statusRequest = StatusRequest.success
+            "Response data is null or empty, No address");
         if (data.isEmpty) {
-          // يمكن إبقاؤها ناجحة لعرض واجهة "لا يوجد بيانات"
-          // أو تعيينها كـ failure إذا كان لا يُتوقع أن تكون فارغة
           statusRequest = StatusRequest.success;
         }
       }
     }
 
-    update(); // <--- تحديث الواجهة لحالة الانتهاء (سواء نجاح أو فشل)
+    update();
   }
 
   deleteAddress(String addressid) async {
