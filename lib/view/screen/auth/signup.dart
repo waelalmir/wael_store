@@ -18,7 +18,6 @@ class Signup extends StatelessWidget {
     return Scaffold(
       appBar: Customappbar(title: 'Sign up'.tr),
       body: GetBuilder<SignUpControllerImp>(builder: (controller) {
-        // ✅ نستخدم GetBuilder لإيجاد الكنترولر
         return HandlingDataRequest(
           statusRequest: controller.statusRequest,
           widget: Container(
@@ -26,9 +25,7 @@ class Signup extends StatelessWidget {
             child: Form(
               key: controller.formstate,
               child: ListView(children: [
-                // ... (كل حقول الإدخال تبقى كما هي)
-                // ...
-                // حقل اسم المستخدم
+
                 CustomTextFormAuth(
                   isNumber: false,
                   valid: (val) {
@@ -39,44 +36,40 @@ class Signup extends StatelessWidget {
                   labelText: "username",
                   suffixIcon: Icons.person_outline,
                 ),
-                // حقل البريد الإلكتروني
                 CustomTextFormAuth(
                   isNumber: false,
                   valid: (val) {
                     return validinput(val!, 5, 100, "email");
                   },
-                  myController: controller.email, // ✅ الربط صحيح
+                  myController: controller.email, 
                   hintText: '4'.tr,
                   labelText: "Email".tr,
                   suffixIcon: Icons.email_outlined,
                 ),
-                // حقل الهاتف
+
                 CustomTextFormAuth(
                   isNumber: true,
                   valid: (val) {
                     return validinput(val!, 5, 20, "phone");
                   },
-                  myController: controller.phone, // ✅ الربط صحيح
+                  myController: controller.phone, 
                   hintText: ''.tr,
                   labelText: "phone",
                   suffixIcon: Icons.phone_outlined,
                 ),
-                // حقل كلمة المرور
                 CustomTextFormAuth(
                   isNumber: false,
                   valid: (val) {
                     return validinput(val!, 5, 20, "password");
                   },
-                  myController: controller.password, // ✅ الربط صحيح
+                  myController: controller.password, 
                   hintText: '5'.tr,
                   labelText: "Password".tr,
                   suffixIcon: Icons.lock_outline_rounded,
                 ),
-                // زر الانتقال إلى تسجيل الدخول
-                // ...
+ 
                 InkWell(
                     onTap: () {
-                      // ✅ استدعاء الدالة من نفس الكنترولر
                       controller.goToSignIn();
                     },
                     child: Text("Sign in".tr,
@@ -87,7 +80,6 @@ class Signup extends StatelessWidget {
                     controller.signUp();
                   },
                 ),
-                // ...
               ]),
             ),
           ),
