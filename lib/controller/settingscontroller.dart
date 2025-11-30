@@ -41,7 +41,6 @@ class Settingscontroller extends LocaleController {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // العنوان
             Text(
               "Change Language",
               style: TextStyle(
@@ -52,10 +51,8 @@ class Settingscontroller extends LocaleController {
 
             const SizedBox(height: 20),
 
-            // زر العربي
             InkWell(
               onTap: () {
-                // ضيف وظيفتك هون
                 changeLang("ar");
                 Get.offAllNamed(AppRoutes.homePage);
               },
@@ -80,10 +77,8 @@ class Settingscontroller extends LocaleController {
 
             const SizedBox(height: 15),
 
-            // زر الإنجليزي
             InkWell(
               onTap: () {
-                // ضيف وظيفتك هون
                 changeLang("en");
                 Get.offAllNamed(AppRoutes.homePage);
               },
