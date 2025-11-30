@@ -13,8 +13,8 @@ class Adressaddcontroller extends GetxController {
   TextEditingController? street;
   TextEditingController? name;
 
-  String lat = "33.5138"; // مثال: خط عرض مدينة دمشق
-  String long = "36.2765"; // مثال: خط طول مدينة دمشق
+  String lat = "33.5138"; 
+  String long = "36.2765"; 
 
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   StatusRequest statusRequest = StatusRequest.none;
@@ -31,9 +31,6 @@ class Adressaddcontroller extends GetxController {
 
     lat = Get.arguments['lat'];
     long = Get.arguments['long'];
-
-    print(lat);
-    print(long);
   }
 
   addAddress() async {
@@ -57,15 +54,13 @@ class Adressaddcontroller extends GetxController {
               icon: const Icon(Icons.notifications_off_rounded),
               messageText: const Text("product add it to cart"));
 
-          //  data.addAll(response['data']);
         }
-        // data.addAll(response['data']);
         Get.offAllNamed(
           AppRoutes.address,
         );
       } else {
         Get.defaultDialog(
-            title: "ُWarning", middleText: "sorry the was an error !!!");
+            title: "ُWarning", middleText: "sorry there was an error !!!");
         statusRequest = StatusRequest.failure;
       }
     }
