@@ -60,33 +60,7 @@ class HomepagecontrollerImp extends Homepagecontroller {
     update();
   }
 
-  getTopselling() async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await itemsData.getTopSelling();
-    print("=============================== Controller $response ");
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      if (response != null && response['data'] != null) {
-        topsellingList.clear();
-        List dataresponse = response['data'];
-        topsellingList.addAll(dataresponse.map((e) => ItemsModel.fromJson(e)));
-      }
-    } else {
-      statusRequest = StatusRequest.failure;
-      Get.snackbar("Oops", "no topSells found");
-    }
-    update();
-  }
-
-  @override
-  goToItems(categories, selectedcat, String catId) {
-    Get.toNamed(AppRoutes.itemsPage, arguments: {
-      "categories": categories,
-      "selectedcat": selectedcat,
-      "catId": catId,
-    });
-  }
+  getTopselling() {}
 
  
 
