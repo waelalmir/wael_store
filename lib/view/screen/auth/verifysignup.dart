@@ -1,5 +1,5 @@
 import 'package:ecommerce/controller/auth/verifysignupcontroller.dart';
-import 'package:ecommerce/core/class/handlingdataview.dart'; // تأكد من استيراد هذا الملف
+import 'package:ecommerce/core/class/handlingdataview.dart'; 
 import 'package:ecommerce/core/constant/color.dart';
 import 'package:ecommerce/view/widget/auth/customtextauth.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,6 @@ class Verifysignup extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Verification"),
           centerTitle: true,
-          // ...
         ),
         body: GetBuilder<VerifyCodeSignUpControllerImp>(
           builder: (controller) => HandlingDataRequest(
@@ -42,16 +41,12 @@ class Verifysignup extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     numberOfFields: 5,
                     borderColor: const Color(0xFF512DA8),
-                    //set to true to show as box or false to show as dash
                     showFieldAsBox: true,
-                    //runs when a code is typed in
                     onCodeChanged: (String code) {
-                      //handle validation or checks here
                     },
-                    //runs when every textfield is filled
                     onSubmit: (String verificationCode) {
                       controller.goToSuccessSignUp(verificationCode);
-                    }, // end onSubmit
+                    },
                   ),
                   const SizedBox(height: 40),
                   Container(
