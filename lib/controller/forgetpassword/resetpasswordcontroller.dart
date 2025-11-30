@@ -25,7 +25,7 @@ class ResetPasswordControllerImp extends ResetPasswordController {
   goToSuccessResetPassword() async {
     if (password.text != repassword.text) {
       return Get.defaultDialog(
-          title: "warning", middleText: "not same password");
+          title: "warning", middleText: "not the same password");
     }
     if (formstate.currentState!.validate()) {
       statusRequest = StatusRequest.loading;
@@ -35,7 +35,6 @@ class ResetPasswordControllerImp extends ResetPasswordController {
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          // data.addAll(response['data']);
           Get.offNamed(AppRoutes.successresetpassword,
               arguments: {"email": email});
         } else {
